@@ -12,12 +12,12 @@ def _kill_example(pid: int):
 
 def _open_example_app(example_path: str, example_name: str):
     os.chdir(example)
-    proc = subprocess.Popen(["cd", example_path, "&&", "python", "-m", example_name], start_new_session=True)
+    proc = subprocess.Popen(["/bin/bash", "/Users/julianbaumgartner/Dev/toga/run_example.sh"], start_new_session=True)
     time.sleep(2)
     cords = pyautogui.locateCenterOnScreen(os.path.join("../../", "button.png"))
     pyautogui.click(cords.x, cords.y)
     time.sleep(2)
-    new_cords = pyautogui.locateCenterOnScreen(os.path.join("../../", "button.png"))
+    new_cords = pyautogui.locateCenterOnScreen(os.path.join("../../", "button2.png"))
     breakpoint()
     print(f"{cords} VS {new_cords}")
     assert (cords.x, cords.y) != (new_cords.x, new_cords.y)
